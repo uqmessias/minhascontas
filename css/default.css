@@ -1,0 +1,74 @@
+﻿
+a{
+	text-decoration:none;
+	color:green;
+	cursor:pointer;
+	}
+#todo
+{
+    position:absolute;
+    top:0px;left:0px;
+    width:100%;height:100%;
+    margin:0px;padding:0px;
+    display:none;background:url('../img/escurecer.png') repeat;
+}
+#divLogin
+{
+    position:absolute;
+    top:50px;left:200px;
+    background:white;
+    color:green;padding:50px;
+}
+#alerta
+{
+    position:absolute;
+    top:0px;
+    left:200px;
+    min-width:400px;
+    overflow:visible;
+    font-weight:bold;
+    background:#F9F39B;
+    text-align:center;
+    border:3px solid gray;
+    display:none;
+    z-index:9;
+}
+#tabela tr.todastr:hover{background:#F9F39B!important;cursor:default;}
+#tabela th{
+	background:red;
+	color:white;
+	}
+#tabela td img{
+	height:20px;
+	width:20px;
+	border:0px;
+	}
+#carregando{
+	background:#dddddd;
+	text-align:center;
+	color:green;
+	font-weight:bold;
+	font-size:25px;
+	padding:30px 1px 20px 1px;
+	height:40px;
+	width:600px;
+	display:block;
+	border:3px solid gray;
+	z-index:99;
+	}	
+#opcoes {
+	padding:10px;
+	background:#bdbdbd;
+	font-size:15px;
+	display:none;
+	border:2px solid black;
+	}
+#opcoes a{
+	color:green;
+	}
+#opcoes a:hover{
+	color:white;
+	font-weight:bold;
+	background:gray;
+	padding:2px;
+	}
