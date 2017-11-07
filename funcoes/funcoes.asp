@@ -1,5 +1,8 @@
 <!--#include file="login.asp"--><% response.Expires = -1
-Response.CharSet = "utf-8"
+Response.Charset = "utf-8"
+Session.LCID = 1046
+Session.TimeOut = 50
+Session.CodePage = 1252
 on error resume next
 lugar = application("path") & "contas.mdb"
 set bd = Server.CreateObject("adodb.connection")
@@ -13,12 +16,18 @@ total = replace(request.QueryString("total"),"'","")
 info = replace(request.QueryString("info"),"'","")
 id = replace(request.QueryString("id"),"'","")
 valor = replace(request.QueryString("valor"),"'","")
+'mostrar querystrings
+'for each key in Request.QueryString()
+'    Response.Write key & " = "& Request.QueryString(key) & "<br/>" 
+'next
+
+
 If Session("login") = "Uilque" Then
     Select case cmd
     case "add"
 		    response.write "<!--alertar-->"
 	    if nome<>"" and pagar<>"" and receber<>"" and mes<>"" and total<>"" and info<>"" then
-		    bd.execute("insert into contas (nome,pagar,receber,mes,total,info) values('"&nome&"','"&pagar&"','"&receber&"','"&mes&"',"&total&",'"&info&"')")
+		    bd.execute("insert into contas (nome,pagar,receber,mes,total,info) values('" & nome &"','"&pagar&"','"&receber&"','"&mes&"',"&total&",'"&info&"')")
 		    response.write "Dados inseridos com sucesso!"
 	    else
 		    response.write "Erro ao inserir dados!Algum campo ficou em branco!"
@@ -112,7 +121,7 @@ If Session("login") = "Uilque" Then
 	    end if
     case "excluir_tudo"
 		    response.write "<!--alertar-->"
-	    if id<>"" and bd.execute("select * from contas").eof= false then
+	    if bd.execute("select * from contas").eof= false then
 		    bd.execute("delete * from contas")
 		    response.write "Todas as contas foram excluidas com sucesso!"
 	    else
@@ -122,7 +131,7 @@ If Session("login") = "Uilque" Then
     if mes<>"" then
 	    set rs = bd.execute("select * from contas order by total")
 		    response.write "<!--mostrar-->"
-		    response.write "<table id=""tabela"" style=""padding:5px;width:600px;border:1px solid gray;"">"
+		    response.write "<table id=""tabela"">"
 	    if rs.eof then
 		    response.write "<tr><td colspan=""7"" align=""center""><b style=""color:red"">N&atilde;o existe nenhuma conta!</b></td></tr>"
 	    else
@@ -130,9 +139,9 @@ If Session("login") = "Uilque" Then
 		    n = 0
 		    do until rs.eof
 			    n= n+1
-			    estilo = " style=""background:#eaeaea;border-left:1px solid gray;border-right:1px solid red;"""
+			    estilo = " style=""background:#eaeaea;"""
 			    if len(replace(replace(n/2,".",""),",",""))<len(n/2) then
-				    estilo = " style=""background:#cdcdcd;border-left:1px solid gray;border-right:1px solid red;"""
+				    estilo = " style=""background:#cdcdcd;"""
 			    end if
 			    response.write "<tr"&estilo&" class='todastr'><td style=""font-weight:bold;font-size:13px;"" id=""nome"&n&""" ondblclick=""Funcoes.inicioEdicaoCampo(this, " & rs("id") & ", 'nome')"" title=""Nome da Conta"">"&Server.HTMLencode(rs("nome"))&"</td>"
 			    response.write "<td id=""pagar"&n&""" ondblclick=""Funcoes.inicioEdicaoCampo(this, " & rs("id") & ", 'pagar')"" title=""Pagar"">"&Server.HTMLencode(rs("pagar"))&"</td>"

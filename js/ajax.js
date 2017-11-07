@@ -29,9 +29,10 @@ function Ajax(url, atualizar, funcao) {
     //Iniciar requizição ajax
     req.atualizar = atualizar;
     req.onreadystatechange = function () {
-        if (this.atualizar)
+        /*Mostrar imagem de carregando
+		if (this.atualizar)
             ID("mostrar", { innerHTML: "<div id='carregando'><img src='img/carregando.gif' height='30' width='30'>&nbsp;&nbsp;&nbsp;<span style='color:gray;font-size:15px;'>Carregando...</span></div>" });
-
+		*/
         //caso a página esteja OK
         if (this.readyState == 4) {
             if (this.responseText.indexOf("<!--NaoAutorizado-->") != -1) {

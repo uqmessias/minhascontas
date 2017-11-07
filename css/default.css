@@ -33,9 +33,11 @@ a{
     display:none;
     z-index:9;
 }
+#tabela{padding:5px;width:600px;border:1px solid gray;}
+#tabela tr.todastr td{border:1px solid white;padding:2px}
 #tabela tr.todastr:hover{background:#F9F39B!important;cursor:default;}
 #tabela th{
-	background:red;
+	background:green;
 	color:white;
 	}
 #tabela td img{

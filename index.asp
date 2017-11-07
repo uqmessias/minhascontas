@@ -2,6 +2,7 @@
 <head>
 <title>Uilque Messias - Minhas Contas - UMMoney - Gerenciador de Contas </title>
 <link rel="stylesheet" href="css/default.css" type="text/css" />
+<link rel="shortcut icon" href="img/money.png" type="image/png" />
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/dragdrop.js"></script>
 <script type="text/javascript" src="js/funcoes.js"></script>

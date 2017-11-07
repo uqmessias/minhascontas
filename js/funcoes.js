@@ -38,10 +38,13 @@ sair = function () {
         Ajax('login=sair');
 
 },
-alertar = function(msg){
+alertar = function (msg) {
+    clearTimeout(this.time);
+    clearTimeout(this.time);
+    clearTimeout(this.time);
     ID('alerta', { innerHTML: msg, style: { display: 'block'} });
     fade('alerta');
-    setTimeout("ID('alerta', {style: {display: 'none'}});", 4000);
+    this.time = setTimeout("ID('alerta', {style: {display: 'none'}});", 6000);
 },
 Funcoes = {
     excluir: function (id) {
@@ -69,11 +72,22 @@ Funcoes = {
             value: campo.innerHTML,
             onblur: funcao,
             style: { fontWeigth: 'bold' }
+        }),
+        textArea = createObj('textarea', { campo: campo,
+            onkeyup: funcao,
+            value: campo.innerHTML,
+            onblur: funcao,
+            style: { fontWeigth: 'bold' }
         });
         campo.innerHTML = '';
         //Adicionando o campo de edição
-        campo.appendChild(input);
-        input.focus();
+        if (nome == 'info') {
+            campo.appendChild(textArea);
+            textArea.focus();
+        } else {
+            campo.appendChild(input);
+            input.focus();
+        }
     },
     EditarCampo: function (campo) {
         Ajax('cmd=atualiza&valor=' + campo.innerHTML + '&id=' + campo.numero + '&nome=' + campo.nome);
@@ -119,7 +133,7 @@ Funcoes = {
             nome += '.txt';
             ID("opcoes", { style: { display: 'none'} });
             Ajax("cmd=salvar_txt&nome=" + nome);
-            open("window.location.href='down.asp?File=" + salva + nome + "&Name=" + nome + "&Syze=100'", 'nome');
+            setTimeout("open('funcoes/down.asp?File=" + salva + nome + "&Name=" + nome + "&Syze=100', 'nome');", 3000);
         }
     },
     zerar: function () {
