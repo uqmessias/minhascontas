@@ -7,7 +7,7 @@
 <script type="text/javascript" src="js/dragdrop.js"></script>
 <script type="text/javascript" src="js/funcoes.js"></script>
 <script type="text/javascript">
-    window.onload = function () {
+	window.addEventListener("DOMContentLoaded", function () {
         dragdrop("mover", "addConta");
         Ajax('cmd=mostrar&mes=<%=month(now)%>');
         Funcoes.zerar();
@@ -17,7 +17,7 @@
             if (e.type == 'click' || chr == 13)
                 login();
         }
-    }
+    });
 </script>
 </head>
 <body>
@@ -37,15 +37,15 @@
 	<tr> <td>&nbsp;</td><td align="right"><input type="image"  src="img/x.png" style="height:32px;width:32px;z-index:99;" onclick="ID('addConta').style.display='none';"/></td> </tr>
 	<tr>
 		<th> Nome:</th>
-		<td><input name="text" type="text" id="nome" title="Coloque aqui o nome de quem você deve ou de quem te deve!" /></td>
+		<td><input name="text" type="text" id="nome" title="Coloque aqui o nome de quem vocï¿½ deve ou de quem te deve!" /></td>
 	</tr>
 	<tr>
 		<th>Pagar:</th>
-		<td><input name="text2" type="text" id="pagar" title="Coloque aqui o valor que você vai pagar(Valor Numérico)" value="0" /></td>
+		<td><input name="text2" type="text" id="pagar" title="Coloque aqui o valor que vocï¿½ vai pagar(Valor Numï¿½rico)" value="0" /></td>
 	</tr>
 	<tr>
 		<th>Receber:</th>
-		<td><input name="text2" type="text" id="receber" title="Coloque aqui o valor que você vai receber(Valor Numérico)" value="0" /></td>    
+		<td><input name="text2" type="text" id="receber" title="Coloque aqui o valor que vocï¿½ vai receber(Valor Numï¿½rico)" value="0" /></td>    
 
 	</tr>
 	<tr>
@@ -55,7 +55,7 @@
           <option value="<%=month(now)%>"><%=monthName(month(now))%></option>
           <option value="1">Janeiro</option>
           <option value="2">Fevereiro</option>
-          <option value="3">Março</option>
+          <option value="3">Marï¿½o</option>
           <option value="4">Abril</option>
           <option value="5">Maio</option>
           <option value="6">Junho</option>
